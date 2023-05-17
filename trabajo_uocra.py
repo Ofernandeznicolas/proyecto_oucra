@@ -45,4 +45,5 @@ while fecha_excluir != "0":
 fecha_resultado = Fecha_Finalizacion_Curso(dias_total, fecha_inicio, fechas_excluidas, dias_no_laboral)
 
 # devolver el resultado de la fecha
+### cambio
 print(f"La fecha de finalizacion del curso excluyendo el/los dia/s {dias_no_laboral} y el/los feriado/s {fechas_excluidas} es: {fecha_resultado}")
