@@ -6,6 +6,7 @@ nombre_curso = input("Ingrese el nombre del curso : \n")
 nombre_docente =input("Ingresar nombre del/de la docente : \n")
 
 horas_total_curso = int(input("Ingrese la cantidad total de horas del curso : "))
+horas_total_curso2 = horas_total_curso
 horas_total_curso = timedelta(hours=horas_total_curso)
 
 condicion = True  # Ingreso del tipo de hora Catedra - Practica con una validacion si el mismo es incorrecto
@@ -148,7 +149,7 @@ fecha_resultado = Fecha_Finalizacion_Curso(dias_total, fecha_inicio, fechas_excl
 
 # devolver el resultado de la fecha
 
-print(f"El/La Docente {nombre_docente} correspondiente al curso {nombre_curso} de {horas_total_curso} hs total \n")
+print(f"El/La Docente {nombre_docente} correspondiente al curso {nombre_curso} de {horas_total_curso2} hs total \n")
 
 if tipo_curso.lower() == "catedra":
     hora_catedra = timedelta(minutes=40)
