@@ -173,3 +173,44 @@ if len(fechas_excluidas_str) == 1:
     print(f"La fecha excluida que no se brindara clases sera: {fechas_excluidas_str} \n")
 else:
     print(f"Las fechas excluidas que no se brindaran clases seran: {fechas_excluidas_str} \n")
+    
+    
+####### obtener feriados ###
+
+
+import requests
+
+def obtener_feriados(año, incluir_opcional=False):
+    url = f"http://nolaborables.com.ar/api/v2/feriados/{año}"
+    
+    if incluir_opcional:
+        url += "?incluir=opcional"
+    
+    response = requests.get(url)
+    feriados = response.json()
+    
+    return feriados
+
+
+año = 2023
+feriados = obtener_feriados(año)
+
+for feriado in feriados:
+    motivo = feriado["motivo"]
+    tipo = feriado["tipo"]
+    dia = feriado["dia"]
+    mes = feriado["mes"]
+    id_feriado = feriado["id"]
+    
+    print(f"Motivo: {motivo}")
+    print(f"Tipo: {tipo}")
+    print(f"Día: {dia}")
+    print(f"Mes: {mes}")
+    print(f"ID: {id_feriado}")
+    print("-------------------------")
+    
+
+
+
+
+print(feriados)
