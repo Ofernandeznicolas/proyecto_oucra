@@ -1,6 +1,7 @@
-#Año - InicioPrimerCuatrimestre - FinPrimerCuatrimestre - InicioSegundoCuatrimestre - FinSegundoCuatrimestre
-import sqlite3
+"""Codigo para cargar las fechas de inicio y fin
+de cada cuatrimestre"""
 
+import sqlite3
 
 class fechaCursadas:
     def __init__(self,conexion, Año, InicioPrimerCuatri, FinPrimerCuatri, InicioSegundoCuatri, FinSegundoCautri):
@@ -14,7 +15,7 @@ class fechaCursadas:
         self.InicioSegundoCuatri = InicioSegundoCuatri
         self.FinSegundoCuatri = FinSegundoCautri
         
-    
+    """Metodo para obtener los valores pasados"""
     def caracteristicas(self):
         print(f"Fechas de inicio y fin durante el año {self.Año}")
         print(f"Inicio del primer cuatrimestre: {self.InicioPrimerCuatri}")
@@ -22,7 +23,7 @@ class fechaCursadas:
         print(f"Inicio del segundo cuatrimestre: {self.FinSegundoCuatri}")
         print(f"Finalizacion del segundo cuatrimestre: {self.FinSegundoCuatri}")
         
-        
+    """Metodo para conectarme con mi Base de datos"""    
     def conectar(self):
         self.conexion = sqlite3.connect(self.conect)
         
@@ -30,7 +31,7 @@ class fechaCursadas:
         
         return self.conexion, self.cursor
     
-    
+    """Metodo para ingresar los datos a mi base de datos"""
     def ingresarDatos(self):
         self.conectar()
         
@@ -40,12 +41,15 @@ class fechaCursadas:
         self.cursor.execute(comando)
         self.conexion.commit()
         self.conexion.close()
-        
-        
-
+                
+"""Defino una variable a la cual le asigno mi ruta
+correspondiente a la base de datos"""
 conexion = "C:/Users/ofern/OneDrive/Escritorio/Proyecto Oucra/proyecto_oucra/base de datos/BDtrabajoUocra.db"
 
+"""Defino una variable a la cual la defino con mi clase
+y le asigno sus atributos"""
 PruebaFechas = fechaCursadas(conexion,2022,"02-01-2023","14-06-2023","03-07-2023","21-12-2023")
         
-            
+"""Realizo la accion de ingresar las fechas
+cargadas anteriormente a mi base de datos"""            
 PruebaFechas.ingresarDatos()    
