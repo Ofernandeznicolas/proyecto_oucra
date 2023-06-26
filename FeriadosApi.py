@@ -1,8 +1,12 @@
+"""Codigo para obtener los resultados de la api feriados
+a tener en cuenta que los feriados correspondiente
+a el año que no es el actual o anterior solo cargara
+los feriados inamovibles"""
+
 import requests
 from datetime import datetime, timedelta, date, time
 
-
-class datosApi:
+class DatosApi:
     def __init__(self, año):
         self.año = año
         self.resultado = None
@@ -23,6 +27,7 @@ class datosApi:
         
         return self.resultado
     
+    
     """Agrego la fecha completa a cada diccionario 
        para utilizarla en otras funciones (BD - Calculadora)"""
     def añadirFechasResultado(self): 
@@ -30,7 +35,6 @@ class datosApi:
         """En todas los metodos agrego un if 
         para que si mi atributo no tenga valor ejecute
         su metodo correspondiente"""
-        
         if self.resultado == None:
             self.resultadosApi()
         
@@ -134,5 +138,4 @@ class datosApi:
         self.feriadosParaBD = feriadosParaBD            
                     
         return self.feriadosParaBD
-    
 
